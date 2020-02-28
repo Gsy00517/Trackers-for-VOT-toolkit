@@ -16,7 +16,7 @@
 
 ## Suggestions
 
-### Trying to run NCC first with vot-toolkit is recommanded. To achieve this, you can follow  [VOT Chanllenge support](http://www.votchallenge.net/howto/). You may also need  [VOT Challenge technical support](https://groups.google.com/forum/?hl=en#!forum/votchallenge-help) and [vot-toolkit Issues]([https://github.com/votchallenge/vot-toolkit/issues?utf8=%E2%9C%93&q=](https://github.com/votchallenge/vot-toolkit/issues?utf8=✓&q=)) to search for more help.
+### Trying to run NCC first with vot-toolkit is recommanded. To achieve this, you can follow  [VOT Chanllenge support](http://www.votchallenge.net/howto/). You may also need  [VOT Challenge technical support](https://groups.google.com/forum/?hl=en#!forum/votchallenge-help) and [vot-toolkit Issues](https://github.com/votchallenge/vot-toolkit/issues?utf8=%E2%9C%93&q=https://github.com/votchallenge/vot-toolkit/issues?utf8=✓&q=) to search for more help.
 
 
 
