@@ -35,7 +35,7 @@ catch err
     cd_ind = strfind(wrapper_pathstr, filesep());
     VOT_path = wrapper_pathstr(1:cd_ind(end));
     
-    error_report_path = [VOT_path 'error_reports/'];
+    error_report_path = [VOT_path '/error_reports/'];
     if ~exist(error_report_path, 'dir')
         mkdir(error_report_path);
     end

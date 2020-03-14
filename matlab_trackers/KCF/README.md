@@ -22,7 +22,7 @@ Code from: https://codeload.github.com/scott89/KCF/zip/master
 
 ## Trouble Shooting
 
-### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace KCF/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
+1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace KCF/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
 
 
 

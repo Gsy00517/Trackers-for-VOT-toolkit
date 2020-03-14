@@ -12,7 +12,7 @@
 
 ## System Requirements
 
-### All trackers included were tested on Ubuntu18.04 with MATLAB2018b.
+### All trackers included were tested on Ubuntu18.04 with MATLAB2018b. Only a single CPU is needed for the evaluation because VOT toolkit provides a evaluation strategy which can ignore the influence of different hardwares.
 
 
 

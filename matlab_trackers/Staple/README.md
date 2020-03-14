@@ -28,7 +28,7 @@ Code from: http://data.votchallenge.net/vot2018/trackers/Staple-code-2018-06-17T
 
 ## Trouble Shooting
 
-### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.",  try to replace Staple/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
+1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.",  try to replace Staple/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
 
 
 
