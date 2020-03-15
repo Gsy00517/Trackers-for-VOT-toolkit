@@ -40,7 +40,7 @@ Code from: https://codeload.github.com/martin-danelljan/ECO/zip/master
 
 1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace ECO/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
 
-2. ### If you use the imagenet-vgg-m-2048.mat downloaded by install.m the MAT file may can't be loaded. In that case, you'd better download the pretrained model independently from the link given in the Preparation part above.
+2. ### If you use the imagenet-vgg-m-2048.mat downloaded by install.m, the MAT file may can't be loaded. In that case, you'd better download the pretrained model independently from the link given in the Preparation part above.
 
 
 

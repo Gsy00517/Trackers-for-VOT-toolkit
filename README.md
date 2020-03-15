@@ -6,6 +6,8 @@
 
 ### This repository contains several trackers I have integrated into [VOT toolkit](https://github.com/votchallenge/vot-toolkit), you can see the README in each tracker's folder for more details.
 
+### Specifically, the code is tested with the following version of VOT toolkit:[c53fa23ba1fe59181af63fff783ab243ffeeff4b](https://github.com/votchallenge/vot-toolkit/tree/c53fa23ba1fe59181af63fff783ab243ffeeff4b).
+
 > ### p.s. Codes provided here are mainly for evaluation by VOT toolkit, for further developing, please visit the link (if given) in the README for each tracker to get more information.
 
 
