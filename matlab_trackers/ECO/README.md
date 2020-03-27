@@ -12,7 +12,7 @@ Code from: https://codeload.github.com/martin-danelljan/ECO/zip/master
 
 #### 			Please compile MatConvNet according to the [installation guideline](http://www.vlfeat.org/matconvnet/install/).
 
-### Deep CNN features need pretrained CNN models.
+### Deep CNN features need pre-trained CNN models.
 
 #### You can dowload [imagenet-vgg-m-2048](https://www.vlfeat.org/matconvnet/models/imagenet-vgg-m-2048.mat) and place it in feature_extraction/networks/.
 
@@ -40,7 +40,7 @@ Code from: https://codeload.github.com/martin-danelljan/ECO/zip/master
 
 1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace ECO/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
 
-2. ### If you use the imagenet-vgg-m-2048.mat downloaded by install.m, the MAT file may can't be loaded. In that case, you'd better download the pretrained model independently from the link given in the Preparation part above.
+2. ### If you use the imagenet-vgg-m-2048.mat downloaded by install.m, the MAT file may can't be loaded. In that case, you'd better download the pre-trained model independently from the link given in the Preparation part above.
 
 
 
