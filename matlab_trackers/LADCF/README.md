@@ -6,7 +6,11 @@ Code from: http://data.votchallenge.net/vot2018/trackers/LADCF-code-2018-06-18T2
 
 ## Preparation
 
-### This tracker is depend on MatConvNet, PDollar Toolbox, mtimesx and mexResize, which already have been included in external_libs folder.
+### This tracker depends on MatConvNet, PDollar Toolbox, mtimesx and mexResize, the latter two have been included in external_libs folder.
+
+#### Please download [MatConvNet](https://codeload.github.com/vlfeat/matconvnet/zip/master) and unzip it in external_libs/matconvnet/.
+
+#### Please download [PDollar Toolbox](https://codeload.github.com/pdollar/toolbox/zip/master) and unzip it in external_libs/pdollar_toolbox/.
 
 ### Pre-trained CNN models is also needed for test.
 
