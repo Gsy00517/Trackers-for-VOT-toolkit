@@ -36,7 +36,6 @@ Code from: http://data.votchallenge.net/vot2018/trackers/MCCT-code-2018-06-15T03
 
    ##### tracker_command = generate_matlab_command('mcct', {'abs_path/MCCT'});
 
-   ##### tracker_linkpath = {'abs_path/MCCT/'};
 
 ### Move tracker_MCCT.m to your workspace.
 

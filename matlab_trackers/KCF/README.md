@@ -12,7 +12,6 @@ Code from: https://codeload.github.com/scott89/KCF/zip/master
 
   ##### tracker_command = generate_matlab_command('kcf', {'abs_path/KCF'});
 
-  ##### tracker_linkpath = {'abs_path/KCF/'};
 
 ### Move tracker_KCF.m to your workspace.
 

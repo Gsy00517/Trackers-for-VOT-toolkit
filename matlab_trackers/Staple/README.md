@@ -18,7 +18,6 @@ Code from: http://data.votchallenge.net/vot2018/trackers/Staple-code-2018-06-17T
 
   ##### tracker_command = generate_matlab_command('staple', {'abs_path/Staple'});
 
-  ##### tracker_linkpath = {'abs_path/Staple/'};
 
 ### Move tracker_Staple.m to your workspace.
 
