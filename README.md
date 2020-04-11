@@ -20,9 +20,27 @@
 
 ## Suggestions
 
-### Trying to run NCC first with VOT toolkit is recommanded. To achieve this, you can follow  [VOT Chanllenge support](http://www.votchallenge.net/howto/). You may also need  [VOT Challenge technical support](https://groups.google.com/forum/?hl=en#!forum/votchallenge-help) and [VOT toolkit issues](https://github.com/votchallenge/vot-toolkit/issues?utf8=%E2%9C%93&q=https://github.com/votchallenge/vot-toolkit/issues?utf8=✓&q=) to search for more help.
+### Trying to run NCC first with VOT toolkit is recommended. To achieve this, you can follow  [VOT Chanllenge support](http://www.votchallenge.net/howto/). You may also need  [VOT Challenge technical support](https://groups.google.com/forum/?hl=en#!forum/votchallenge-help) and [VOT toolkit issues](https://github.com/votchallenge/vot-toolkit/issues?utf8=%E2%9C%93&q=https://github.com/votchallenge/vot-toolkit/issues?utf8=✓&q=) to search for more help.
 
 ### You'd better check whether the benchmark wrapper is provided by the author before you want to integrate a new tracker. This can save your time. If there aren't any benchmark wrappers provided or there is but crushed, you can follow NCC example and the guide on the official website to integrate the tracker by yourself.
+
+
+
+## Methods
+
+### As far as I know, there mainly three ways to integrate a new tracker.
+
+1. ### As mentioned in suggestions, if the wrapper is provided by the author, you will be lucky because all you need is to replace the vot function files such as vot.m or something.
+
+2. ### However, because of the big difference between each version of VOT toolkit, the method above doesn't work in many ways. During the integration work, I found that if the input of the run file  is the sequence while the output is the results, then the wrapper provided by Martin Danelljan may be very useful.
+
+   ```matlab
+   function results = runfile(seq, res_path, bSaveImage, parameters)
+   ```
+
+   ### Needless to say, it works for the trackers proposed by Martion himself, such as CCOT, ECO, SRDCF, UPDT, to name a few. It seems that it also works when I apply it to GFSDCF's demo.
+
+3. ### The most universal approach is following  [VOT Chanllenge support](http://www.votchallenge.net/howto/) and the example NCC to add handle at the proper positions so that the information can be recognized and obtained by VOT toolkit. More examples like KCF, Staple, DAT etc. can be found in this repository.
 
 
 
