@@ -62,7 +62,7 @@ region = [cx, cy, w, h];
             scale_window = scale_window(2:end);
         else
             scale_window = single(hann(p.num_scales));
-        end;
+        end
 
         ss = 1:p.num_scales;
         scale_factors = p.scale_step.^(ceil(p.num_scales/2) - ss);
@@ -89,7 +89,7 @@ region = [cx, cy, w, h];
             % image = '/home/berti/datasets/validation/tc_Ball_ce2/0002.jpg';
             if isempty(image) % Are we done?
                 break;
-            end;
+            end
 
         % Testing step
             image = imread(image);
@@ -230,7 +230,7 @@ region = [cx, cy, w, h];
             end
         end
     frame = frame + 1;
-    end;
+    end
 
     % **********************************
     % VOT: Output the results

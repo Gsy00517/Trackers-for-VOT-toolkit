@@ -95,7 +95,7 @@ if mod(p.num_scales,2) == 0
     scale_window = scale_window(2:end);
 else
     scale_window = single(hann(p.num_scales));
-end;
+end
 
 ss = 1:p.num_scales;
 scale_factors = p.scale_step.^(ceil(p.num_scales/2) - ss);
@@ -130,7 +130,7 @@ if frame>1
 
     if isempty(image)
         break;
-    end;
+    end
     im = imread(image);
   
        % extract patch of size bg_area and resize to norm_bg_area
@@ -304,7 +304,7 @@ end
     xsf = fft(im_patch_scale,[],2);
     new_sf_num = bsxfun(@times, ysf, conj(xsf));
     new_sf_den = sum(xsf .* conj(xsf), 1);
-    if frame == 1,
+    if frame == 1
         sf_den = new_sf_den;
         sf_num = new_sf_num;
     else

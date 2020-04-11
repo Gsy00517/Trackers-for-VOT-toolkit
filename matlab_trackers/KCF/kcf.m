@@ -48,7 +48,7 @@ while true
 
     if isempty(image)
         break;
-    end;
+    end
 
 	% Perform a tracking step, obtain new region
     [state, region, params] = kcf_update(state, imread(image), params, features, kernel);
@@ -58,7 +58,7 @@ while true
     % **********************************
     handle = handle.report(handle, region);
 
-end;
+end
 
 % **********************************
 % VOT: Output the results
@@ -85,7 +85,7 @@ function [state, location, params] = kcf_initialize(I, region, params, features,
         region = round([round(region(1)), round(region(2)), ... 
             round(region(1) + region(3)) - round(region(1)), ...
             round(region(2) + region(4)) - round(region(2))]);
-    end;
+    end
 
     x1 = max(1, region(1));
     y1 = max(1, region(2));
@@ -141,21 +141,21 @@ function [state, location, params] = kcf_update(state, I, params, features, kern
 	zf = fft2(get_features(patch, features, params.cell_size, params.cos_window));
    
     switch params.kernel_type
-        case 'gaussian',
+        case 'gaussian'
             kzf = gaussian_correlation(zf, params.model_xf, kernel.sigma);
-        case 'polynomial',
+        case 'polynomial'
             kzf = polynomial_correlation(zf, params.model_xf, kernel.poly_a, kernel.poly_b);
-        case 'linear',
+        case 'linear'
             kzf = linear_correlation(zf, params.model_xf);
     end
     response = real(ifft2(params.model_alphaf .* kzf)); % equation for fast detection
 
     % target location
     [vert_delta, horiz_delta] = find(response == max(response(:)), 1);
-    if vert_delta > size(zf,1) / 2, % wrap around to negative half-space of vertical axis
+    if vert_delta > size(zf,1) / 2 % wrap around to negative half-space of vertical axis
         vert_delta = vert_delta - size(zf,1);
     end
-    if horiz_delta > size(zf,2) / 2, % same for horizontal axis
+    if horiz_delta > size(zf,2) / 2 % same for horizontal axis
         horiz_delta = horiz_delta - size(zf,2);
     end
 
@@ -184,11 +184,11 @@ function [params] = kcf_modelUpdate(im, params, firstframe, features, kernel)
 
     % Kernel Ridge Regression, calculate alphas (in Fourier domain)
     switch params.kernel_type
-    case 'gaussian',
+    case 'gaussian'
         kf = gaussian_correlation(xf, xf, kernel.sigma);
-    case 'polynomial',
+    case 'polynomial'
         kf = polynomial_correlation(xf, xf, kernel.poly_a, kernel.poly_b);
-    case 'linear',
+    case 'linear'
         kf = linear_correlation(xf, xf);
     end
     alphaf = params.yf ./ (kf + params.lambda); % equation for fast training
