@@ -45,7 +45,7 @@ Code from: http://data.votchallenge.net/vot2018/trackers/MCCT-code-2018-06-15T03
 
 ## Trouble Shooting
 
-1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace MCCT/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
+1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace MCCT/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/. If it still failed, you'd better use the same version of the VOT toolkit which is given in the README of this repository.
 
 
 

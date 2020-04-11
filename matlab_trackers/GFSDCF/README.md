@@ -28,7 +28,7 @@ Code from: https://github.com/XU-TIANYANG/GFS-DCF/archive/master.zip
 
 ## Trouble Shooting
 
-1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace GFSDCF/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
+1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace GFSDCF/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/. If it still failed, you'd better use the same version of the VOT toolkit which is given in the README of this repository.
 
 2. ### If you use the pretrained model or sequences downloaded by install.m, the files may can't be loaded. In that case, you'd better download the pre-trained model or sequences independently from the url given in install.m and prepare them following install.m by yourself.
 

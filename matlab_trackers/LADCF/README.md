@@ -32,7 +32,7 @@ Code from: http://data.votchallenge.net/vot2018/trackers/LADCF-code-2018-06-18T2
 
 ## Trouble Shooting
 
-1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace both LADCF/vot.m and LADCF/utils/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/.
+1. ### If you met with an ERROR like this: "Tracker execution interrupted: Did not receive response.", you can try to replace both LADCF/vot.m and LADCF/utils/vot.m with the vot.m in vot-toolkit/tracker/examples/matlab/. If it still failed, you'd better use the same version of the VOT toolkit which is given in the README of this repository.
 
 2. ### If you use the imagenet-resnet-50-dag.mat downloaded by install.m, the MAT file may can't be loaded. In that case, you'd better download the pre-trained model independently from the link given in the Preparation part above.
 
