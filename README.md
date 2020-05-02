@@ -38,7 +38,7 @@
    function results = runfile(seq, res_path, bSaveImage, parameters)
    ```
 
-   ### Needless to say, it works for the trackers proposed by Martion himself, such as CCOT, ECO, SRDCF, UPDT, to name a few. It seems that it also works when I apply it to GFSDCF's demo.
+   ### Needless to say, it works for the trackers proposed by Martin himself, such as CCOT, ECO, SRDCF, UPDT, to name a few. It seems that it also works when I apply it to GFSDCF's demo.
 
 3. ### The most universal approach is following  [VOT Chanllenge support](http://www.votchallenge.net/howto/) and the example NCC to add handle at the proper positions so that the information can be recognized and obtained by VOT toolkit. More examples like KCF, Staple, DAT etc. can be found in this repository.
 
