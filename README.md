@@ -24,7 +24,11 @@
 
 ### You'd better check whether the benchmark wrapper is provided by the author before you want to integrate a new tracker. This can save your time. If there aren't any benchmark wrappers provided or there is but crushed, you can follow NCC example and the guide on the official website to integrate the tracker by yourself.
 
+### By default, each tracker will repeat 3 times when you execute run_experiments.m. If you want run your tracker only once during experiment, you can add the following code between workspace_load() and workspace_evaluate().
 
+```matlab
+experiments{1,1}.parameters.repetitions = 1;
+```
 
 ## Methods
 
