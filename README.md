@@ -66,3 +66,21 @@ experiments{1,1}.parameters.repetitions = 1;
   connection = 'socket';
   ```
 
+### If you have already passed the TraX support test but receive this ERROR: "Tracker execution interrupted: Unable to establish connection". This is mainly caused by tracker crash. You'd better check the generated log file for the tracker you want to run under the file vot-workspace/logs/tracker_name.
+
+### If there are no problem with your code, then the problem may come from environment. Take my experience as an example, when I tried to run NCC and some other trackers, I always met the ERROR above and the log files told me some functions such as normxcorr2, configureKalmanFilter, etc. were undefined. This is because some required MATLAB toolboxes were not installed. If you only install the default toolboxes, then it will be hard for visual object trackers written in MATLAB to run and the VOT toolkit also cannot work. In that case, you can search the undefined function to find the corresponding toolbox. The following toolboxes are recommended  to install.
+
+- MATLAB(default in MATLAB R2018b)
+- Simulink(default in MATLAB R2018b)
+- Computer Vision System Toolbox
+- Deep Learning Toolbox
+- Image Acquisition Toolbox
+- Image Processing Toolbox(Required by VOT toolkit)
+- Parallel Computing Toolbox
+- Statistics and Machine Learning Toolbox(default in MATLAB R2018b)
+- Symbolic Math Toolbox(default in MATLAB R2018b)
+- Vision HDL Toolbox
+
+### Some of these may be redundant, but I promise that you can successfully run the tracker with these toolboxes.
+
+### If you have already installed the MATLAB, don't worry, you can run the MATLAB install file again to add the toolboxes above or use add-ons in MATLAB GUI to search and install.
