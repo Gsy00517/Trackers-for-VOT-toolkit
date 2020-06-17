@@ -12,6 +12,10 @@ Code from: https://github.com/XU-TIANYANG/GFS-DCF/archive/master.zip
 
 #### Please download [PDollar Toolbox](https://codeload.github.com/pdollar/toolbox/zip/master) and unzip it in tracker_exter/pdollar_toolbox/.
 
+### Pretrained backbone is also needed.
+
+#### You must dowload [imagenet-resnet-50-dag](https://www.vlfeat.org/matconvnet/models/imagenet-resnet-50-dag.mat) and place it in tracker_featu/offline_models/.
+
 ### Make sure you have run install.m before the test.
 
 ### Please replace the followings, remember to change the absolute path.

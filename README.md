@@ -77,6 +77,8 @@ experiments{1,1}.parameters.repetitions = 1;
 - Image Acquisition Toolbox
 - Image Processing Toolbox(Required by VOT toolkit)
 - Parallel Computing Toolbox
+- Sensor Fusion and Tracking Toolbox
+- Signal Processing Toolbox
 - Statistics and Machine Learning Toolbox(default in MATLAB R2018b)
 - Symbolic Math Toolbox(default in MATLAB R2018b)
 - Vision HDL Toolbox
