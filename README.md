@@ -30,6 +30,8 @@
 experiments{1,1}.parameters.repetitions = 1;
 ```
 
+
+
 ## Methods
 
 ### As far as I know, there mainly three ways to integrate a new tracker.
@@ -50,9 +52,11 @@ experiments{1,1}.parameters.repetitions = 1;
 
 ## Trouble Shooting
 
-### When I was trying to run NCC, I met with this ERROR: "Tracker has not passed the TraX support test."
+1. ### <u>Tracker execution interrupted: Unable to establish connection</u>
 
-### Actually, this problem can be avoided by modifying vot-toolkit/tracker/tracker_run.m a little bit.
+#### When I was trying to run NCC, I met with this ERROR: "Tracker execution interrupted: Unable to establish connection" and it indicates that "TraX support not detected" or "Tracker has not passed the TraX support test".
+
+#### Actually, this problem can be avoided by modifying vot-toolkit/tracker/tracker_run.m a little bit.
 
 - #### Find this:
 
@@ -66,9 +70,11 @@ experiments{1,1}.parameters.repetitions = 1;
   connection = 'socket';
   ```
 
-### If you have already passed the TraX support test but receive this ERROR: "Tracker execution interrupted: Unable to establish connection". This is mainly caused by tracker crash. You'd better check the generated log file for the tracker you want to run under the file vot-workspace/logs/tracker_name.
+2. ### <u>Tracker execution interrupted: Did not receive response</u>
 
-### If there are no problem with your code, then the problem may come from environment. Take my experience as an example, when I tried to run NCC and some other trackers, I always met the ERROR above and the log files told me some functions such as normxcorr2, configureKalmanFilter, etc. were undefined. This is because some required MATLAB toolboxes were not installed. If you only install the default toolboxes, then it will be hard for visual object trackers written in MATLAB to run and the VOT toolkit also cannot work. In that case, you can search the undefined function to find the corresponding toolbox. The following toolboxes are recommended  to install.
+#### If you have already passed the TraX support test but receive this ERROR: "Tracker execution interrupted: Did not receive response". This is mainly caused by tracker crash. You'd better check the generated log file for the tracker you want to run under the file vot-workspace/logs/tracker_name.
+
+#### If there are no problem with your code, then the problem may come from environment. Take my experience as an example, when I tried to run NCC and some other trackers, I always met the ERROR above and the log files told me some functions such as normxcorr2, configureKalmanFilter, etc. were undefined. This is because some required MATLAB toolboxes were not installed. If you only install the default toolboxes, then it will be hard for visual object trackers written in MATLAB to run and the VOT toolkit also cannot work. In that case, you can search the undefined function to find the corresponding toolbox. The following toolboxes are recommended  to install.
 
 - MATLAB(default in MATLAB R2018b)
 - Simulink(default in MATLAB R2018b)
@@ -83,6 +89,52 @@ experiments{1,1}.parameters.repetitions = 1;
 - Symbolic Math Toolbox(default in MATLAB R2018b)
 - Vision HDL Toolbox
 
-### Some of these may be redundant, but I promise that you can successfully run the tracker with these toolboxes.
+#### Some of these may be redundant, but I promise that you can successfully run the tracker with these toolboxes.
 
-### If you have already installed the MATLAB, don't worry, you can run the MATLAB install file again to add the toolboxes above or use add-ons in MATLAB GUI to search and install.
+#### If you have already installed the MATLAB, don't worry, you can run the MATLAB install file again to add the toolboxes above or use add-ons in MATLAB GUI to search and install.
+
+3. ### <u>Tracker execution interrupted: Invalid MEX-file</u>
+
+#### I also have met this ERROR: "Tracker execution interrupted: Invalid MEX-file". The list of the invalid MEX-files might be short or long, but I think the reason is the same. This issue is due to the old version of the libstdc++. To solve this, you can execute the following commands in terminal.
+
+```l
+cd /usr/local/MATLAB/R2018b/sys/os/glnxa64
+sudo mv libstdc++.so.6.0.20 bak-libstdc++.so.6.0.20
+sudo mv libstdc++.so.6 bak-libstdc++.so.6
+sudo ln -sf /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21 ./
+sudo ln -sf ./libstdc++.so.6.0.21 ./libstdc++.so.6
+```
+
+#### Note that in the first command, you should change to the directory where your MATLAB is installed. Otherwise, the followed commands may cause some system problem.
+
+4. ### <u>Warning: The version of gcc is not supported</u>
+
+#### During the compile process, you may keep getting the warning that warn you that your version is not suitable. Actually, it doesn't matter. Just ignore it and compiling still can be done.
+
+#### However, if you are using a very old version of MATLAB and the toolkit still cannot work, then maybe you really need to change the version of gcc.
+
+#### You can check the version of gcc in your system by:
+
+```
+gcc --version
+```
+
+#### or simply by:
+
+```
+gcc -v
+```
+
+#### You can change the version of gcc and g++(e.g. to version 4.7 for old version MATLAB) by executing the following commands:
+
+```
+sudo apt-get install gcc-4.7
+sudo apt-get install g++-4.7
+cd usr/bin
+sudo rm gcc
+sudo ln -s gcc-4.7 gcc
+sudo rm g++
+sudo ln -s g++-4.7 g++
+ls -al gcc g++
+```
+
