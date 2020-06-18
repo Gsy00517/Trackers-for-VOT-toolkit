@@ -74,7 +74,7 @@ experiments{1,1}.parameters.repetitions = 1;
 
 #### If you have already passed the TraX support test but receive this ERROR: "Tracker execution interrupted: Did not receive response". This is mainly caused by tracker crash. You'd better check the generated log file for the tracker you want to run under the file vot-workspace/logs/tracker_name.
 
-#### If there are no problem with your code, then the problem may come from environment. Take my experience as an example, when I tried to run NCC and some other trackers, I always met the ERROR above and the log files told me some functions such as normxcorr2, configureKalmanFilter, etc. were undefined. This is because some required MATLAB toolboxes were not installed. If you only install the default toolboxes, then it will be hard for visual object trackers written in MATLAB to run and the VOT toolkit also cannot work. In that case, you can search the undefined function to find the corresponding toolbox. The following toolboxes are recommended  to install.
+#### If there are no problem with your code, then the problem may come from environment. Take my experience as an example, when I tried to run NCC and some other MATLAB trackers, I always met the ERROR above and the log files told me some functions such as normxcorr2, configureKalmanFilter, etc. were undefined. This is because some required MATLAB toolboxes were not installed. If you only install the default toolboxes, then it will be hard for visual object trackers written in MATLAB to run and the VOT toolkit also cannot work. In that case, you can search the undefined function to find the corresponding toolbox. The following toolboxes are recommended  to install.
 
 - MATLAB(default in MATLAB R2018b)
 - Simulink(default in MATLAB R2018b)
