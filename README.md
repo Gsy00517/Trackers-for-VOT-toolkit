@@ -14,7 +14,7 @@
 
 ## System Requirements
 
-### All trackers included were tested on Ubuntu18.04 with MATLAB2018b. Only a single CPU is needed for the evaluation because VOT toolkit provides a evaluation strategy which can ignore the influence of different hardwares.
+### All trackers included were tested on Ubuntu18.04 with MATLAB2018b. Only a single CPU is needed for the evaluation in this repository and it's not a problem because VOT toolkit provides a evaluation strategy which can ignore the influence of different hardwares.
 
 
 
@@ -29,6 +29,22 @@
 ```matlab
 experiments{1,1}.parameters.repetitions = 1;
 ```
+
+### By default, the evaluation includes three experiments, i.e. baseline, unsupervised and realtime. If you want to perform the evaluation only on baseline experiment or some of experiments above. You can alter the variable in corresponding experiment stack e.g. vot-toolkit/stacks/stack_vot2018.m for VOT2018.
+
+- #### Find this:
+
+```matlab
+experiments = {baseline, unsupervised, realtime};
+```
+
+- #### Change to:
+
+```matlab
+experiments = {baseline};
+```
+
+#### You can also set any other combinations you want.
 
 
 
@@ -138,3 +154,56 @@ sudo ln -s g++-4.7 g++
 ls -al gcc g++
 ```
 
+5. ### <u>(Python) Tracker has not passed the TraX support test</u>
+
+#### Note that the configuration files for other languages are different from MATLAB. Before trying a new language, you'd better check the template in vot-toolkit/tracker/examples/tracker_Demo_language.m for corresponding language.
+
+#### For python trackers, you may need two more steps for preparation on the basis of the MATLAB settings.
+
+1. #### Compile TraX by CMake:
+
+   #### To get the libtrax.so you will have to compile libtrax manually with CMake or download precompiled bundles from bintray because MATLAB cannot compile anything that is not a Mex file. The instruction can be found in the [TraX library documentation](https://trax.readthedocs.io/en/latest/). As for me, I use the first way by executing the following commands:
+
+   ```
+   cd vot-toolkit/native/trax
+   mkdir build
+   cd build 
+   cmake ..
+   make
+   ```
+
+2. #### Set the configuration file for python tracker:
+
+   #### The template in tracker_Demo_py.m is like this:
+
+   ```matlab
+   tracker_label = 'Demo_py';
+   
+   % Note: be carefull for double backslashes on Windows
+   tracker_command = generate_python_command('python_static_rgbd', ...
+       {'<path-to-toolkit-dir>\\tracker\\examples\\python', ...  % tracker source and vot.py are here
+       '<path-to-trax-dir>\\support\\python'});
+   
+   tracker_interpreter = 'python';
+   
+   tracker_linkpath = {'<path-to-trax-build-dir>\bin', ...
+       '<path-to-trax-build-dir>\lib'};
+   ```
+
+   #### Note the path-to-trax-build-dir here is the location of libtrax.so. If you have compiled the TraX as step 1, then the configuration file in your workspace can be set like this(take python_ncc as a example):
+
+   ```matlab
+   tracker_label = ['NCCpy'];
+   
+   tracker_command = generate_python_command('python_ncc', {'abs_path/vot-toolkit/tracker/examples/python', 'abs_path/vot-toolkit/native/trax/support/python'});
+   
+   tracker_interpreter = 'python';
+   
+   tracker_linkpath = {'abs_path/vot-toolkit/native/trax/build'};
+   ```
+
+   #### Remember to change the abs_path.
+
+#### After the settings above, if there is still a error says tracker has not passed the TraX support test, then it may caused by your environment. You should check the log files and you may need to install the missing modules using pip and conda, or set the path correctly.
+
+#### Recently I found that a new official [VOT toolkit](https://github.com/votchallenge/vot-toolkit-python) implemented in Python 3 has been released, still trying.
