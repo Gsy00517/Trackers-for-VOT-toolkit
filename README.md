@@ -86,6 +86,8 @@ experiments = {baseline};
   connection = 'socket';
   ```
 
+#### After that, if the issue still exists, then the main reason could be the absent or the wrong version of vot.m in your tracker directory. In that case, you'd better move the vot.m in vot-toolkit/tracker/examples/matlab/ to the right place in the corresponding tracker directory.
+
 2. ### <u>Tracker execution interrupted: Did not receive response</u>
 
 #### If you have already passed the TraX support test but receive this ERROR: "Tracker execution interrupted: Did not receive response". This is mainly caused by tracker crash. You'd better check the generated log file for the tracker you want to run under the file vot-workspace/logs/tracker_name.
@@ -154,7 +156,11 @@ sudo ln -s g++-4.7 g++
 ls -al gcc g++
 ```
 
-5. ### <u>(Python) Tracker has not passed the TraX support test</u>
+5. ### <u>Tracker execution interrupted: Unable to start the tracker process</u>
+
+#### This problem is caused by incorrect path setting. It always comes with an error notifies you that some functions cannot be found. You can check your path setting according to the location of the missing function. What's more, make sure there are not any other languages expect for English in your path.
+
+6. ### <u>(Python) Tracker has not passed the TraX support test</u>
 
 #### Note that the configuration files for other languages are different from MATLAB. Before trying a new language, you'd better check the template in vot-toolkit/tracker/examples/tracker_Demo_language.m for corresponding language.
 
