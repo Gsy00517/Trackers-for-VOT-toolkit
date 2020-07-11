@@ -76,10 +76,10 @@ function [state, location, params] = kcf_initialize(I, region, params, features,
 
     % If the provided region is a polygon ...
     if numel(region) > 4
-        x1 = round(min(region(1:2:end)));
-        x2 = round(max(region(1:2:end)));
-        y1 = round(min(region(2:2:end)));
-        y2 = round(max(region(2:2:end)));
+        x1 = round(min(region(1 : 2 : end)));
+        x2 = round(max(region(1 : 2 : end)));
+        y1 = round(min(region(2 : 2 : end)));
+        y2 = round(max(region(2 : 2 : end)));
         region = round([x1, y1, x2 - x1, y2 - y1]);
     else
         region = round([round(region(1)), round(region(2)), ... 
@@ -89,10 +89,10 @@ function [state, location, params] = kcf_initialize(I, region, params, features,
 
     x1 = max(1, region(1));
     y1 = max(1, region(2));
-    x2 = min(width-2, region(1) + region(3) - 1);
-    y2 = min(height-2, region(2) + region(4) - 1);
+    x2 = min(width - 2, region(1) + region(3) - 1);
+    y2 = min(height - 2, region(2) + region(4) - 1);
 
-    template = gray((y1:y2)+1, (x1:x2)+1);
+    template = gray((y1 : y2) + 1, (x1 : x2) + 1);
 
     % beacuse KCF uses (y,x) while we need (x,y)
     state = struct('template', template, 'size', [y2 - y1 + 1, x2 - x1 + 1]); % state = struct('template', template, 'size', [x2 - x1 + 1, y2 - y1 + 1]);
@@ -117,10 +117,10 @@ function [state, location, params] = kcf_initialize(I, region, params, features,
 	% proportional to target size
     output_sigma = sqrt(prod(target_sz)) * params.output_sigma_factor / params.cell_size;
 	params.yf = fft2(gaussian_shaped_labels(output_sigma, floor(params.window_sz / params.cell_size)));
-    params.cos_window = hann(size(params.yf,1)) * hann(size(params.yf,2))';
+    params.cos_window = hann(size(params.yf, 1)) * hann(size(params.yf, 2))';
 
     if params.resize_image
-        params = kcf_modelUpdate(imresize(gray,0.5), params, 1, features, kernel);
+        params = kcf_modelUpdate(imresize(gray, 0.5), params, 1, features, kernel);
     else
         params = kcf_modelUpdate(gray, params, 1, features, kernel);
     end
@@ -153,10 +153,10 @@ function [state, location, params] = kcf_update(state, I, params, features, kern
     % target location
     [vert_delta, horiz_delta] = find(response == max(response(:)), 1);
     if vert_delta > size(zf,1) / 2 % wrap around to negative half-space of vertical axis
-        vert_delta = vert_delta - size(zf,1);
+        vert_delta = vert_delta - size(zf, 1);
     end
     if horiz_delta > size(zf,2) / 2 % same for horizontal axis
-        horiz_delta = horiz_delta - size(zf,2);
+        horiz_delta = horiz_delta - size(zf, 2);
     end
 
     params.pos = params.pos + params.cell_size * [vert_delta - 1, horiz_delta - 1];
@@ -166,13 +166,13 @@ function [state, location, params] = kcf_update(state, I, params, features, kern
    
     % =====VOT part=====
     if params.resize_image
-        state.position = params.pos*2;
+        state.position = params.pos * 2;
     else
         state.position = params.pos;
     end
-    location = [state.position - state.size/2 , state.size];
-    location = location([2,1,4,3]);
-    state.position = state.position([2,1]);
+    location = [state.position - state.size / 2 , state.size];
+    location = location([2, 1, 4, 3]);
+    state.position = state.position([2, 1]);
 
 end
 

@@ -12,7 +12,7 @@ if do_cleanup
 else
     [pathstr, ~, ~] = fileparts(mfilename('fullpath'));
     cd_ind = strfind(pathstr, filesep());
-    pathstr = pathstr(1:cd_ind(end)-1);
+    pathstr = pathstr(1 : cd_ind(end) - 1);
     cleanup = onCleanup(@() cd(pathstr));
 end
 
@@ -33,14 +33,14 @@ res = eval([runfile_name '(seq, [], []);']);
 catch err
     [wrapper_pathstr, ~, ~] = fileparts(mfilename('fullpath'));
     cd_ind = strfind(wrapper_pathstr, filesep());
-    VOT_path = wrapper_pathstr(1:cd_ind(end));
+    VOT_path = wrapper_pathstr(1 : cd_ind(end));
     
     error_report_path = [VOT_path '/error_reports/'];
     if ~exist(error_report_path, 'dir')
         mkdir(error_report_path);
     end
     
-    report_file_name = [error_report_path tracker_name '_' runfile_name datestr(now,'_yymmdd_HHMM') '.mat'];
+    report_file_name = [error_report_path tracker_name '_' runfile_name datestr(now, '_yymmdd_HHMM') '.mat'];
     
     save(report_file_name, 'err')
     

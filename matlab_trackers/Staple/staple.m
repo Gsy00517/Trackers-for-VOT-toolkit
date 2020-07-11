@@ -28,7 +28,7 @@ region = [cx, cy, w, h];
     % Init visualization
     videoPlayer = [];
     if p.visualization && isToolboxAvailable('Computer Vision System Toolbox')
-        videoPlayer = vision.VideoPlayer('Position', [100 100 [size(image,2), size(image,1)]+30]);
+        videoPlayer = vision.VideoPlayer('Position', [100 100 [size(image, 2), size(image, 1)] + 30]);
     end
 
     % patch of the target + padding
@@ -54,27 +54,27 @@ region = [cx, cy, w, h];
         scale_factor = 1;
         base_target_sz = target_sz;
         scale_sigma = sqrt(p.num_scales) * p.scale_sigma_factor;
-        ss = (1:p.num_scales) - ceil(p.num_scales/2);
+        ss = (1 : p.num_scales) - ceil(p.num_scales/2);
         ys = exp(-0.5 * (ss.^2) / scale_sigma^2);
         ysf = single(fft(ys));
         if mod(p.num_scales,2) == 0
-            scale_window = single(hann(p.num_scales+1));
-            scale_window = scale_window(2:end);
+            scale_window = single(hann(p.num_scales + 1));
+            scale_window = scale_window(2 : end);
         else
             scale_window = single(hann(p.num_scales));
         end
 
-        ss = 1:p.num_scales;
-        scale_factors = p.scale_step.^(ceil(p.num_scales/2) - ss);
+        ss = 1 : p.num_scales;
+        scale_factors = p.scale_step.^(ceil(p.num_scales / 2) - ss);
 
         if p.scale_model_factor^2 * prod(p.norm_target_sz) > p.scale_model_max_area
-            p.scale_model_factor = sqrt(p.scale_model_max_area/prod(p.norm_target_sz));
+            p.scale_model_factor = sqrt(p.scale_model_max_area / prod(p.norm_target_sz));
         end
 
         scale_model_sz = floor(p.norm_target_sz * p.scale_model_factor);
         % find maximum and minimum scales
         min_scale_factor = p.scale_step ^ ceil(log(max(5 ./ bg_area)) / log(p.scale_step));
-        max_scale_factor = p.scale_step ^ floor(log(min([size(image,1) size(image,2)] ./ target_sz)) / log(p.scale_step));
+        max_scale_factor = p.scale_step ^ floor(log(min([size(image, 1) size(image, 2)] ./ target_sz)) / log(p.scale_step));
     end       
 
     frame = 1;
@@ -109,7 +109,7 @@ region = [cx, cy, w, h];
             if p.den_per_channel
                 hf = hf_num ./ (hf_den + p.lambda);
             else
-                hf = bsxfun(@rdivide, hf_num, sum(hf_den, 3)+p.lambda);
+                hf = bsxfun(@rdivide, hf_num, sum(hf_den, 3) + p.lambda);
             end
             response_cf = ensure_real(ifft2(sum(conj(hf) .* xtf, 3)));
 
@@ -131,7 +131,7 @@ region = [cx, cy, w, h];
             % Estimation
             response = mergeResponses(response_cf, response_pwp, p.merge_factor, p.merge_method);
             [row, col] = find(response == max(response(:)), 1);
-            center = (1+p.norm_delta_area) / 2;
+            center = (1 + p.norm_delta_area) / 2;
             pos = pos + ([row, col] - center) / area_resize_factor;
 
             % Scale space search
@@ -152,18 +152,18 @@ region = [cx, cy, w, h];
                 target_sz = round(base_target_sz * scale_factor);
                 avg_dim = sum(target_sz)/2;
                 bg_area = round(target_sz + avg_dim);
-                if(bg_area(2)>size(image,2)),  bg_area(2)=size(image,2)-1;    end
-                if(bg_area(1)>size(image,1)),  bg_area(1)=size(image,1)-1;    end
+                if(bg_area(2) > size(image,2)),  bg_area(2) = size(image,2)-1;    end
+                if(bg_area(1) > size(image,1)),  bg_area(1) = size(image,1)-1;    end
 
                 bg_area = bg_area - mod(bg_area - target_sz, 2);
                 fg_area = round(target_sz - avg_dim * p.inner_padding);
                 fg_area = fg_area + mod(bg_area - fg_area, 2);
                 % Compute the rectangle with (or close to) params.fixed_area and
                 % same aspect ratio as the target bboxgetScaleSubwindow
-                area_resize_factor = sqrt(p.fixed_area/prod(bg_area));
+                area_resize_factor = sqrt(p.fixed_area / prod(bg_area));
             end
 
-            region = [pos([2,1]) - target_sz([2,1])/2, target_sz([2,1])];
+            region = [pos([2, 1]) - target_sz([2, 1]) / 2, target_sz([2, 1])];
 
             % **********************************
             % VOT: Report position for frame
@@ -171,7 +171,7 @@ region = [cx, cy, w, h];
             handle = handle.report(handle, region); % Report position for the given frame
         end
 
-        rectPosition = [pos([2,1]) - target_sz([2,1])/2, target_sz([2,1])];
+        rectPosition = [pos([2, 1]) - target_sz([2, 1]) / 2, target_sz([2, 1])];
         if p.visualization
             vis_im = gather(image);
             if isempty(videoPlayer)
@@ -217,8 +217,8 @@ region = [cx, cy, w, h];
 
         % Scale update
         if p.scale_adaptation
-            im_patch_scale = getScaleSubwindow(image, pos, base_target_sz, scale_factor*scale_factors, scale_window, scale_model_sz, p.hog_scale_cell_size);
-            xsf = fft(im_patch_scale,[],2);
+            im_patch_scale = getScaleSubwindow(image, pos, base_target_sz, scale_factor * scale_factors, scale_window, scale_model_sz, p.hog_scale_cell_size);
+            xsf = fft(im_patch_scale, [], 2);
             new_sf_num = bsxfun(@times, ysf, conj(xsf));
             new_sf_den = sum(xsf .* conj(xsf), 1);
             if frame == p.startFrame
@@ -261,7 +261,7 @@ function p = params_init(image, varargin)
     p.num_scales = 27;
     p.scale_model_factor = 1.0;
     p.scale_step = 1.0292;
-    p.scale_model_max_area = 32*16;
+    p.scale_model_max_area = 32 * 16;
     % environment stuff
     p.visualization = 0; % show output bbox on frame
     p.init_gpu = 0;
@@ -276,19 +276,19 @@ function p = params_init(image, varargin)
     p.track_lost = [];
     p.ground_truth = [];     
     % p = vl_argparse(p, varargin);
-    if(size(image, 3)==1)
+    if(size(image, 3) == 1)
         p.grayscale_sequence = true;
     end 
 end
 
 % Reimplementation of Hann window (in case signal processing toolbox is missing)
 function H = myHann(X)
-    H = 0.5*(1 - cos(2*pi*(0:X-1)'/(X-1)));
+    H = 0.5 * (1 - cos(2 * pi * (0 : X - 1)' / (X - 1)));
 end
 
 % We want odd regions so that the central pixel can be exact
 function y = floor_odd(x)
-    y = 2*floor((x-1) / 2) + 1;
+    y = 2 * floor((x - 1) / 2) + 1;
 end
 
 function y = ensure_real(x)
