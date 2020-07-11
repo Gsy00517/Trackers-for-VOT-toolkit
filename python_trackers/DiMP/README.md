@@ -8,7 +8,7 @@ Code from: https://github.com/visionml/pytracking
 
 ### Because of system difference, it is recommended to set the environment step-by-step. My setting is a bit different with the official steps and I will write my steps later. Before that, you can follow the steps in the official repository and contact me if you meet any issues.
 
-### To run the trackers, you need several parameters files downloaded. If you are in China and have trouble in downloading the file using official links, you can use my copy at [BaiduNetdisk](https://pan.baidu.com/share/init?surl=62V1MCVIls4eJufVC3QOGA) with code: 2vdz.
+### To run the trackers, you need several parameters files downloaded. If you are in China and have trouble in downloading the file using official links, you can use my copy at [BaiduNetdisk](https://pan.baidu.com/s/1cj6ozS0OTWwOIghurwG-zw) with code: wyx0.
 
 ### Please replace the followings, remember to change the environment path and absolute path.
 

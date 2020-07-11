@@ -8,7 +8,7 @@ Code from: https://github.com/visionml/pytracking
 
 ### Like DiMP, ATOM is also provided in pytracking toolkit and the setting is very similar. Thus, you can try DiMP before you want to integrate ATOM.
 
-### To run the trackers, you need several parameters files downloaded. If you are in China and have trouble in downloading the file using official links, you can use my copy at [BaiduNetdisk](https://pan.baidu.com/share/init?surl=62V1MCVIls4eJufVC3QOGA) with code: 2vdz.
+### To run the trackers, you need several parameters files downloaded. If you are in China and have trouble in downloading the file using official links, you can use my copy at [BaiduNetdisk](https://pan.baidu.com/s/1cj6ozS0OTWwOIghurwG-zw) with code: wyx0.
 
 ### Please replace the followings, remember to change the environment path and absolute path.
 
