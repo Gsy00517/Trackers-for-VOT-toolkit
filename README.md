@@ -160,7 +160,11 @@ ls -al gcc g++
 
 #### This problem is caused by incorrect path setting. It always comes with an error notifies you that some functions cannot be found. You can check your path setting according to the location of the missing function. What's more, make sure there are not any other languages expect for English in your path.
 
-6. ### <u>(Python) Tracker has not passed the TraX support test</u>
+6. ### <u>Tracker execution interrupted: Tracker process not alive</u>
+
+#### This problem can be caused by wrong runfiles(maybe runfiles for other benchmarks such as OTB). Check whether you are using the correct runfile for VOT dataset and your issue will be solved.
+
+7. ### <u>(Python) Tracker has not passed the TraX support test</u>
 
 #### Note that the configuration files for other languages are different from MATLAB. Before trying a new language, you'd better check the template in vot-toolkit/tracker/examples/tracker_Demo_language.m for corresponding language.
 
@@ -213,3 +217,5 @@ ls -al gcc g++
 #### After the settings above, if there is still a error says tracker has not passed the TraX support test, then it may caused by your environment. You should check the log files and you may need to install the missing modules using pip and conda, or set the path correctly.
 
 #### Recently I found that a new official [VOT toolkit](https://github.com/votchallenge/vot-toolkit-python) implemented in Python 3 has been released, still trying.
+
+#### For more trouble shooting, you can check the README file for each tracker in this repository. Hoping these will help you.
