@@ -6,15 +6,15 @@
 
 ### This repository contains several trackers I have integrated into [VOT toolkit](https://github.com/votchallenge/vot-toolkit), you can see the README in each tracker's folder for more details.
 
-### Successfully integrated trackers at present:
+### Successfully integrated trackers at present(some of them haven't uploaded at present):
 
-- #### MATLAB trackers: DAT, ECO, GFS-DCF, KCF, LADCF, MCCT, SRDCF, Staple.
+- #### MATLAB trackers: DAT, ECO, GFS-DCF, KCF, LADCF, MCCT, SRDCF, Staple, UPDT, ASRCF, BACF, CCOT, CFNet, MDNet, SiamFC, SiamFC-triplet.
 
 - #### Python trackers: ATOM, DiMP.
 
 ### Specifically, the code is tested with the following version of VOT toolkit:[c53fa23ba1fe59181af63fff783ab243ffeeff4b](https://github.com/votchallenge/vot-toolkit/tree/c53fa23ba1fe59181af63fff783ab243ffeeff4b).
 
-> ### p.s. Codes provided here are mainly for evaluation by VOT toolkit, for further developing, please visit the link (if given) in the README for each tracker to get more information.
+> ### p.s. Codes provided here are mainly for evaluation by VOT toolkit, for further developing, please visit the link(if given) in the README for each tracker to get more information.
 
 
 
@@ -60,7 +60,7 @@ experiments = {baseline};
 
 1. ### As mentioned in suggestions, if the wrapper is provided by the author, you will be lucky because all you need is to replace the vot function files such as vot.m or something.
 
-2. ### However, because of the big difference between each version of VOT toolkit, the method above doesn't work in many ways. During the integration work, I found that if the input of the run file  is the sequence while the output is the results, then the wrapper provided by Martin Danelljan may be very useful.
+2. ### However, because of the big difference between each version of VOT toolkit, the method above doesn't work in many ways. During the integration work, I found that if the input of the run file  is the sequence while the output is the results(i.e. OTB format), then the wrapper provided by Martin Danelljan may be very useful.
 
    ```matlab
    function results = runfile(seq, res_path, bSaveImage, parameters)
